@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-i = 0;
-h = hex(i)
-for i in range(0, 98):
+for i in range(0, 99):
+    h = hex(i)
     print("{} = {}".format(i, h))
