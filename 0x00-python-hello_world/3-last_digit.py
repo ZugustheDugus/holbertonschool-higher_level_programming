@@ -7,4 +7,4 @@ if last_digit > 5:
 if last_digit == 0:
     print("Last digit of {} is {} and is 0".format(number, last_digit))
 if last_digit < 6 and last_digit != 0:
-    print("Last digit of {} is {} and is less than 6 and is not 0".format(number, last_digit)
+    print("Last digit of {} is {} and is less than 6 and is not 0".format(number, last_digit))
