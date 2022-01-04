@@ -7,4 +7,4 @@ if ld > 5:
 if ld == 0:
     print("Last digit of %d is %d and is 0" % (number, ld));
 if ld < 6 and ld != 0:
-    print("Last digit of %d is %d and is less than 6 and is not 0" % number, ld);
+    print("Last digit of %d is %d and is less than 6 and not 0" % number, ld);
