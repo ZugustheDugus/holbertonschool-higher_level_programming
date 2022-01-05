@@ -14,5 +14,5 @@ def main():
         if argc != 0:
             print("{}: {}".format(argc, i))
         argc += 1
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    main()
