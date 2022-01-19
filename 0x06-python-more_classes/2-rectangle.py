@@ -67,7 +67,7 @@ class Rectangle:
 
         string = ""
         if self.__width != 0 and self.__height != 0:
-            for i in range (self.height):
+            for i in range(self.height):
                 for j in range(self.width):
                     string += '#'
                 if i != self.__height - 1:
