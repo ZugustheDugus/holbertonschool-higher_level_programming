@@ -1,4 +1,4 @@
-#!/usr/python3
+#!/usr/bin/python3
 """
 I/O Function that appends to a file
 """
