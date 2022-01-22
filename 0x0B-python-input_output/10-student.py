@@ -14,8 +14,8 @@ class Student:
         self.age = age
 
     def to_json(self, attrs=None):
-        """dictionary representatin of Student instance"""
-        if attrs is none:
+        """dictionary representation of Student instance"""
+        if attrs is None:
             return vars(self)
         neu_dict = {}
         for i in attrs:
