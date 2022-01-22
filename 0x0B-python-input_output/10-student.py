@@ -20,7 +20,7 @@ class Student:
         neu_dict = {}
         for i in attrs:
             try:
-                neu_dict[i] = cars(self)[i]
+                neu_dict[i] = vars(self)[i]
             except Exception:
                 pass
         return neu_dict
