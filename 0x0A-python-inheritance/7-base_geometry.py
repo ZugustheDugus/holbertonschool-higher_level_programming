@@ -4,14 +4,19 @@ Base Geometry class with integer validation and no area
 implementation
 """
 
+
 class BaseGeometry:
-    """Class for Base Geometry"""
+    """Class w/ public area"""
     def area(self):
-        """Area implementation"""
-        raise Exception('area() is not implemented')
+        """
+        Area not implemented
+        """
+        raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
-       """Method validates value"""
+       """
+       Validate if integer and not less than 1
+       """
         if type(value) is not int:
             raise TypeError("{} must be an integer".format(name))
 
