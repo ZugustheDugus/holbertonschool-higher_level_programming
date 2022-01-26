@@ -1,0 +1,1 @@
+0x0C Almost a Circle project, in which the Square Class from previous tasks is made into an almost circle class
