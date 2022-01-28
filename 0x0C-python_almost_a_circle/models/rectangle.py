@@ -61,4 +61,8 @@ class Rectangle(Base):
         update(*args)
         kwargs = {self.__id, self.__x, self.__y, self.__width, self.__height}
 
-    
+    def to_dictionary(self):
+        Dict = {self.__id, self.__width, self.__height, self.__x, self.__y}
+
+    def __repr__(self):
+        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
