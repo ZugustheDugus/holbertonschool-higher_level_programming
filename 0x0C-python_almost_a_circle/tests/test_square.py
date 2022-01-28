@@ -63,7 +63,7 @@ class TestClassSquare(unittest.TestCase):
             s3 = Square(10, 0, "0", 12)
         with self.assertRaises(TypeError, msg="width must be an integer"):
             s4 = Square(10, 0, 0, "12")
-        with self.assertRaises(TypeError, msg="width must be an integer"):
+        with self.assertRaises(TypeError, msg="height must be an integer"):
             s5 = Square(10, 0, 0, 12, "hi")
 
     def test_height(self):
@@ -105,3 +105,18 @@ class TestClassSquare(unittest.TestCase):
         self.assertEqual(s1.x, 0)
         s2 = Square(10, 0, 0, 12)
         self.assertEqual(s2.x, 0)
+
+    def test_size_area(self):
+        """
+        Test that tests use of size method and area
+        """
+        s1 = Square(10)
+        self.assertEqual(s1.size, 10)
+        self.assertEqual(s1.area(), 100)
+        s1 = Square(2, 8)
+        self.assertEqual(s1.size, 2)
+        self.assertEqual(s1.area(), 4)
+        s1 = Square(3, 1, 3)
+        self.assertEqual(s1.size, 3)
+        with self.assertRaises(ValueError, msg="height must be an integer"):
+            s1 = Square(-10)
