@@ -1,34 +1,44 @@
 #!/usr/bin/python3
 """
-Square class which draws from Base
+Square class which inherits from Base
 """
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
+    """
+    Square class
+    """
     def __init__(self, size, x=0, y=0, id=None):
-        id = self.__id
-        size = self.__size
-        x = self.__x
-        y = self.__y
-        if type(size) is not int:
-            raise TypeError("size must be an integer")
-        if size < 0:
-            raise ValueError("size must be >= 0")
-        if x < 0:
-            raise ValueError("x must be >= 0")
-        if y < 0:
-            raise ValueError("y must be >= 0")
-        super().__init__(Square)
-
-    def update(self, *args, **kwargs):
-        "assigns each element to an arg"
-        args = (self.__id, self.__x, self.__y, self.__size)
-        update(*args)
-        kwargs = {self.__id, self.__x, self.__y, self.__size}
+        super().__init__(size, size, x, y, id)
 
     def to_dictionary(self):
-        Dict = {self.__id, self.__size, self.__x, self.__y}
+        return {'id': self.id, 'size': self.size, 'x': self.x, 'y': self.y}
 
-    def __repr__(self):
-        return "Square({:d}, {:d})".format(self.__width, self.__height)
+    def update(self, *args, **kwargs):
+        """Update args for the class"""
+        attrs, i = ['id', 'size', 'x', 'y'], 0
+        if args:
+            for value in args:
+                setattr(self, attrs[i], value)
+                i += 1
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
+    def __str__(self):
+        """
+        __str__ method for the square class
+        """
+        return "[Square] ({}) {}/{} - {}".\
+            format(self.id, self.x, self.y, self.width)
+
+    @property
+    def size(self):
+        """getter for size"""
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        """Setter for the size"""
+        self.width = value
+        self.height = value
