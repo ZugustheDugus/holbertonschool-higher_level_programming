@@ -6,7 +6,9 @@ from models.base import Base
 
 
 class Rectangle(Base):
-    """Rectangle class inheriting from Basse class and validating"""
+    """
+    Rectangle class inheriting from Basse class and validating
+    """
     def __init__(self, width, height, x=0, y=0, id=None):
         if type(width) is not int:
             raise TypeError("width must be an integer")
@@ -81,8 +83,9 @@ class Rectangle(Base):
         return string
 
     def __str__(self):
-        """override __str__ method of the Rectangle"""
-        return ("[Rectangle] ({}) {}/{} - {}/{}".format(id, self.__x, self.__y, self.__height, self.__width))
+        """Overriding the __str__ method"""
+        return "[Rectangle] ({}) {}/{} - {}/{}".\
+            format(self.id, self.__x, self.__y, self.__width, self.__height)
 
     def update(self, *args, **kwargs):
         """update attributes"""
@@ -94,4 +97,7 @@ class Rectangle(Base):
             setattr(self, key, value)
 
     def to_dictionary(self):
-        return {'id': self.id, 'width': self.width, 'height': self.height, 'x': self.x, 'y': self.y}
+        """return a dictionary of  attributes"""
+        Dict = {'id': self.id, 'width': self.width, 'height': self.height,
+                'x': self.x, 'y': self.y}
+        return Dict

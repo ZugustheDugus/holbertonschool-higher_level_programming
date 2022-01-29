@@ -7,7 +7,9 @@ import os
 
 
 class Base:
-    """Base class"""
+    """
+    The Base class, starting with number of objects at 0
+    """
     __nb_objects = 0
 
     @classmethod
@@ -60,19 +62,19 @@ class Base:
                 placeholder = cls(1)
             placeholder.update(**dictionary)
             return placeholder
-        
-         @classmethod
-         def load_from_file(cls):
-             """Loads from file"""
-             if not os.path.exists(cls.__name__ + ".json"):
-                 return []
 
-             with open(cls.__name__ + ".json", 'r') as f:
-                 tmp = Base.from_json_string(f.read())
+        @classmethod
+        def load_from_file(cls):
+            """Loads from file"""
+            if not os.path.exists(cls.__name__ + ".json"):
+                return []
 
-                 nlist = []
+            with open(cls.__name__ + ".json", 'r') as f:
+                tmp = Base.from_json_string(f.read())
 
-                 for item in tmp:
-                     nlist.append(cls.create(**item))
+                nlist = []
 
-        return nlist
+                for item in tmp:
+                    nlist.append(cls.create(**item))
+
+            return nlist
