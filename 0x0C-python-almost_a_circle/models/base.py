@@ -8,33 +8,27 @@ import os
 
 class Base:
     """Base class"""
-    __nb_object = 0
+    __nb_objects = 0
 
     @classmethod
     def clear(cls):
-        Base.__nb_object = 0
+        Base.__nb_objects = 0
 
     def __init__(self, id=None):
         """
         initiation method
         """
-        if id is None:
-            Base.__nb_object += 1
-            self.id = Base.__nb_object
-        else:
+        if id is not None:
             self.id = id
+        else:
+            Base.__nb_objects += 1
+            self.id = Base.__nb_objects
 
         @staticmethod
         def to_json_string(list_dictionaries):
             if list_dictionaries is None or list_dictionaries == []:
                 return "[]"
             return json.dumps(list_dictionaries)
-
-        @classmethod
-        def create(cls, **dictionary):
-            placeholder = cls(1, 1)
-            placeholder.update(**dictionary)
-            return placeholder
 
         @classmethod
         def save_to_file(cls, list_objs):
@@ -45,18 +39,40 @@ class Base:
                 for i in list_objs:
                     json_list.append(i.to_dictionary())
 
-        @classmethod
-        def load_from_file(cls):
+            with open(cls.__name__ + ".json", 'w') as f:
+                f.write(Base.to_json_string(json_list))
 
-            if not os.path.exists(cls.__name__ + ".json"):
+        @staticmethod
+        def from_json_string(json_string):
+            """Converts a json string into a list"""
+            if json_string is None:
                 return []
+            if len(json_string) == 0:
+                return []
+            return json.loads(json_string)
 
-            with open(cls.__name__ + ".json", 'r') as f:
-                tmp = Base.from_json_string(f.read())
+        @classmethod
+        def create(cls, **dictionary):
+            """create an object based on dictionary"""
+            if cls.__name__ == "Rectangle":
+                placeholder = cls(1, 1)
+            elif cls.__name__ == "Square":
+                placeholder = cls(1)
+            placeholder.update(**dictionary)
+            return placeholder
+        
+         @classmethod
+         def load_from_file(cls):
+             """Loads from file"""
+             if not os.path.exists(cls.__name__ + ".json"):
+                 return []
 
-            nlist = []
+             with open(cls.__name__ + ".json", 'r') as f:
+                 tmp = Base.from_json_string(f.read())
 
-            for item in tmp:
-                nlist.append(cls.create(**item))
+                 nlist = []
 
-            return nlist
+                 for item in tmp:
+                     nlist.append(cls.create(**item))
+
+        return nlist
