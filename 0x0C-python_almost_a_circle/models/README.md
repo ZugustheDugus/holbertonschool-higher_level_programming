@@ -1,0 +1,1 @@
+The models section of the 0x0C Almost a Circle project. This area contains all of the classes.
