@@ -13,14 +13,15 @@ from models.square import Square
 class TestClassRectangle(unittest.TestCase):
     """Test class for testing Rectangle class"""
     def test_pep8_rectangle(self):
-            """
-            Test that models/rectanlge.py is pep8 compliant.
-            """
-            pep8style = pep8.StyleGuide(quiet=True)
-            result = pep8style.check_files(['models/rectangle.py'])
-            self.assertEqual(result.total_errors, 0,
-                            "Found code style errors (and warnings).")
-# these tests worked locally
+        """
+        Test that models/rectanlge.py is pep8 compliant.
+        """
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(['models/rectangle.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
+        # these tests worked locally
+
     def setUp(self):
         self.inst = Rectangle(1, 2, 3, 4, 5)
 
