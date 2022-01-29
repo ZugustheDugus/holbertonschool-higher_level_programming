@@ -71,21 +71,22 @@ class Rectangle(Base):
 
     def display(self):
         "Prints rectangle dimensions in #'s"
-         string = ""
-         if self.__width != 0 and self.__height != 0:
-             for i in range(self.height):
-                 for j in range(self.width):
-                     string += '#'
-                     if i != self.__height - 1:
-                         string += '\n'
+        string = ""
+        if self.__width != 0 and self.__height != 0:
+            for i in range(self.height):
+                for j in range(self.width):
+                    string += '#'
+                    if i != self.__height - 1:
+                        string += '\n'
         return string
 
     def __str__(self):
         """override __str__ method of the Rectangle"""
-        return ("[Rectangle] ({}) {}/{} - {}/{}".format(self.__area, id, \
+        return ("[Rectangle] ({}) {}/{} - {}/{}".format(id, \
                                                         self.__x, self.__y, self.__height, self.__width))
     def update(self, *args, **kwargs):
         """update attributes"""
+        attrs, i = ['id', 'width', 'height', 'x', 'y'], 0
         for value in args:
             setattr(self, attrs[i], value)
             i += 1
