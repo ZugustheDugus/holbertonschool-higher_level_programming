@@ -1,77 +1,115 @@
 #!/usr/bin/python3
-"""Unittesting for the Base module/class
-Tests are done for each method of the class"""
+"""
+Test for Base Class
+"""
 
 
-import pep8
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
-from models.square import Square
+from models import rectangle
+import inspect
+import pep8
 
 
-class TestClassBase(unittest.TestCase):
-    """Test class for testing Base class"""
+class TestRectangleDocs(unittest.TestCase):
+    """Tests the Rectangle class' style and documentation"""
+    @classmethod
+    def setUpClass(cls):
+        """Set up for the doc tests"""
+        cls.rect_funcs = inspect.getmembers(Rectangle, inspect.isfunction)
 
-    def test_pep8_base(self):
-        """
-        Test that models/base.py is pep8 compliant.
-        """
+    def test_pep8_conformance_rectangle(self):
+        """Test that models/rectangle.py conforms to PEP8."""
         pep8style = pep8.StyleGuide(quiet=True)
-        result = pep8style.check_files(['models/base.py'])
+        result = pep8style.check_files(['models/rectangle.py'])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
-    def test_pep8_test_base(self):
-        """
-        Test that tests/test_models/test_base.py is pep8 compliant
-        """
+    def test_pep8_conformance_test_rectangle(self):
+        """Test that tests/test_models/test_rectangle.py conforms to PEP8."""
         pep8style = pep8.StyleGuide(quiet=True)
-        result = pep8style.check_files(['tests/test_models/test_base.py'])
+        result = pep8style.check_files(['tests/test_models/test_rectangle.py'])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
     def test_module_docstring(self):
-        """
-        Tests for the module docstring
-        """
-        self.assertTrue(len(Base.__doc__) >= 1)
+        """Tests for the presence of a module docstring"""
+        self.assertTrue(len(rectangle.__doc__) >= 1)
 
     def test_class_docstring(self):
-        """
-        Tests for the Base class docstring"""
-        self.assertTrue(len(Base.__doc__) >= 1)
+        """Tests for the presence of a class docstring"""
+        self.assertTrue(len(Rectangle.__doc__) >= 1)
 
     def test_func_docstrings(self):
+        """Tests for the presence of docstrings in all functions"""
+        self.assertTrue(len(Rectangle.__init__.__doc__) >= 1)
+        self.assertTrue(len(Rectangle.to_dictionary.__doc__) >= 1)
+        self.assertTrue(len(Rectangle.__str__.__doc__) >= 1)
+        self.assertTrue(len(Rectangle.update.__doc__) >= 1)
+        self.assertTrue(len(Rectangle.display.__doc__) >= 1)
+        self.assertTrue(len(Rectangle.area.__doc__) >= 1)
+
+
+class TestRectangle(unittest.TestCase):
+    def setUp(self):
+        self.inst = Rectangle(1, 2, 3, 4, 5)
+
+    def test_width(self):
         """
-        Tests docstrings functions
+        test rectangle height
         """
-        self.assertTrue(len(Base.__init__.__doc__) >= 1)
-        self.assertTrue(len(Base.to_json_string.__doc__) >= 1)
-        self.assertTrue(len(Base.from_json_string.__doc__) >= 1)
-        self.assertTrue(len(Base.save_to_file.__doc__) >= 1)
-        self.assertTrue(len(Base.create.__doc__) >= 1)
-        self.assertTrue(len(Base.load_from_file.__doc__) >= 1)
+        self.assertEqual(self.inst.width, 1)
 
-    class NewTest(unittest.TestCase):
-        """Class for a new test to be run"""
+    def test_width(self):
+        """
+        test rectangle width
+        """
+        self.assertEqual(self.inst.height, 2)
 
-        def test_id_sets(self):
-            """
-            Tests no passed ID
-            Passed id
-            then no passed ID again
-            """
-            b1 = Base()
-            b98 = Base(98)
-            b2 = Base()
-            self.assertEqual(b1.id, 1)
-            self.assertEqual(b98.id, 98)
-            self.assertEqual(b2.id, 2)
+    def test_x(self):
+        """
+        text x
+        """
+        self.assertEqual(self.inst.x, 3)
 
-        def test_too_many_args(self):
-            """
-            test too many args to init
-            """
-            with self.assertRaises(TypeError):
-                b = Base(1, 1)
+    def test_y(self):
+        """
+        test y
+        """
+        self.assertEqual(self.inst.y, 4)
+
+    def test_too_many_args(self):
+        """
+        test too many args to init
+        """
+        with self.assertRaises(TypeError):
+            b = Rectangle(1, 1, 2, 3, 4, 5, 6, 7, 8)
+
+    def test_width_valueerror(self):
+        """Test ints <= 0 for width"""
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r = Rectangle(-1, 1)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r = Rectangle(0, 1)
+
+    def test_height_valueerror(self):
+        """Test ints <= 0 for height"""
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r = Rectangle(1, -1)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r = Rectangle(1, 0)
+
+    def test_x_valueerror(self):
+        """Test ints < 0 for x"""
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            r = Rectangle(1, 1, -1)
+
+    def test_y_valueerror(self):
+        """Test ints <= 0 for y"""
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            r = Rectangle(1, 1, 1, -1)
+
+
+if __name__ == "__main__":
+    unittest.main()
