@@ -1,0 +1,3 @@
+-- Task 2
+-- MySQL script to delete a database
+DROP DATABASE IF EXISTS hbtn_0c_0;
