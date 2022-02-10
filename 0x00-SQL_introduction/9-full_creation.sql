@@ -1,7 +1,7 @@
 -- Task 9
 -- MySQL script to create a second table
 CREATE TABLE [IF NOT EXISTS] first_table (
-       id INT.
+       id INT,
        name VARCHAR(256),
        score INT
 );
