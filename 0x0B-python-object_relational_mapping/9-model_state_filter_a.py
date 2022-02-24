@@ -19,9 +19,9 @@ def state_a():
     session = Session()
     for item in session.query(State).filter(State.name.like
                                             ('%a%')).order_by(State.id):
-        print('[]: {}'.format(item.id, item.name))
+        print("{}: {}".format(item.id, item.name))
 
     session.close()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     state_a()
