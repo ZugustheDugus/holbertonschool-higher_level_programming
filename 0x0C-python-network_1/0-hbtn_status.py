@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """
 Script to fetch a url https://intranet.hbtn.io/status
 """
@@ -8,8 +7,8 @@ Script to fetch a url https://intranet.hbtn.io/status
 if __name__ == '__main__':
     import urllib.request
 
-    with urllib.request.urlopen('https://intranet.hbtn.io/status') as resp:
-        html = resp.read()
+    with urllib.request.urlopen('https://intranet.hbtn.io/status') as response:
+        html = response.read()
 
     print("Body response:")
     print("\t- type: " + str(type(html)))
