@@ -11,3 +11,4 @@ if __name__ == '__main__':
     print("\t- type: " + str(type(html)))
     print("\t- content: " + str(html))
     print("\t- utf8 content: " + str(html.decode('utf8')))
+    
