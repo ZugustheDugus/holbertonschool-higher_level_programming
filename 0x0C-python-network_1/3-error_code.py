@@ -4,9 +4,6 @@ Script to catch HTTP errors
 """
 
 
-from cmath import e
-
-
 if __name__ == '__main__':
 
     import sys
