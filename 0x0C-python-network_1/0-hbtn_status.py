@@ -5,16 +5,14 @@ Script to fetch a url
 
 import urllib.request
 
-def rqst0():
-    """Function to fetch the url"""
+if __name__ == '__main__':
 
-    with urllib.request.urlopen('https://intranet.hbtn.io/status') as response:
-        html = response.read()
+    with urllib.request.urlopen('https://intranet.hbtn.io/status') as resp:
+        html = resp.read()
 
     print("Body response:")
     print("\t- type: " + str(type(html)))
     print("\t- content: " + str(html))
     print("\t- utf8 content: " + str(html.decode('utf8')))
 
-if __name__ == '__main__':
-    rqst0()
+
