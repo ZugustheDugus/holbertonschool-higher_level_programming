@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 """
 Take URL and email and send a post request to the URL
 with email as the parameter
