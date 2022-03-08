@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-Script to fetch a url https://intranet.hbtn.io/status
-"""
+"""Script to fetch https://intranet.hbtn.io/status"""
 
 
 if __name__ == '__main__':
