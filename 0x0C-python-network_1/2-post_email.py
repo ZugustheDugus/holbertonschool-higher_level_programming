@@ -6,6 +6,7 @@ with email as the parameter
 
 
 if __name__ == '__main__':
+
     import sys
     import urllib.request
     import urllib.parse
@@ -17,6 +18,6 @@ if __name__ == '__main__':
     data = data.encode('UTF-8')
     rqst = urllib.request.Request(url, data)
     with urllib.request.urlopen(rqst) as response:
-        _page = response.read()
+        _pge = response.read()
 
-    print(_page.decode('UTF-8'))
+    print(_pge.decode('UTF-8'))
