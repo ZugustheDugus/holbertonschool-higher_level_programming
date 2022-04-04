@@ -1,0 +1,1 @@
+README for the JS warmup project for Holberton School by Hayden M. Cooper
