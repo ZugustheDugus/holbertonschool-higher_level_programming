@@ -1,10 +1,11 @@
 #!/usr/bin/node
-string = 'C is fun'
-x = parseInt.argv[2];
-if (x != parseInt.argv[2]){
-    console.log('Missing number of occurrences')
-}
-while (x > 0) {
+const string = 'C is fun';
+x = process.argv[2];
+if (parseInt(x)) {
+  while (x > 0) {
     console.log(string);
     x--;
+  }
+} else {
+  console.log('Missing number of occurrences');
 }
